@@ -1,4 +1,13 @@
 Ttt::Application.routes.draw do
+  resources :iterations
+
+
+  resources :projects
+
+
+  resources :students
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
