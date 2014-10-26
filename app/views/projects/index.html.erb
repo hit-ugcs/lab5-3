@@ -14,8 +14,6 @@
     <td><%= Student.find(project.student_id).name %></td>
     <td><%= project.score %></td>
     <td><%= link_to 'Show', project %></td>
-    <td><%= link_to 'Edit', edit_project_path(project) %></td>
-    <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
