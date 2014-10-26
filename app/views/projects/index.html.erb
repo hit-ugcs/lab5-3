@@ -2,6 +2,7 @@
 
 <table>
   <tr>
+    <th>Student Name</th>
     <th>Score</th>
     <th></th>
     <th></th>
@@ -10,6 +11,7 @@
 
 <% @projects.each do |project| %>
   <tr>
+    <td><%= Student.find(project.studet_id).name %></td>
     <td><%= project.score %></td>
     <td><%= link_to 'Show', project %></td>
     <td><%= link_to 'Edit', edit_project_path(project) %></td>
