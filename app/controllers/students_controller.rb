@@ -44,6 +44,7 @@ class StudentsController < ApplicationController
 
     respond_to do |format|
       if @student.save
+        @project = Project.create(score: nil, student_id: @student.id)
         format.html { redirect_to @student, notice: 'Student was successfully created.' }
         format.json { render json: @student, status: :created, location: @student }
       else

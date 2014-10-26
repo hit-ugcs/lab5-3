@@ -1,8 +1,11 @@
 <p id="notice"><%= notice %></p>
-
 <p>
-  <b>Score:</b>
-  <%= @project.score %>
+	<b>Student Name:</b>
+  	<%= Student.find(@project.student_id).name %>
+</p>
+<p>
+  	<b>Score:</b>
+ 	 <%= @project.score %>
 </p>
 
 
