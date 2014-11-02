@@ -1,8 +1,6 @@
 ---
-rails.png: rails-a3386665c05a2d82f711a4aaa72d247c.png
-rails/index.png: rails-a3386665c05a2d82f711a4aaa72d247c.png
-application.js: application-1cc1584149b05a25997ecac0c278865b.js
-application/index.js: application-1cc1584149b05a25997ecac0c278865b.js
+application.js: application-db8469b4b88e790acfbce12f7356d360.js
+application/index.js: application-db8469b4b88e790acfbce12f7356d360.js
 application.css: application-4e1c83aee4efc6dfda6f86e06a0bab7e.css
 application/index.css: application-4e1c83aee4efc6dfda6f86e06a0bab7e.css
 jquery.min.map: jquery.min-e146c025d6a36461812bc97143056bd3.map
