@@ -26,7 +26,7 @@
                             <td><%= link_to "Not graded yet", edit_iteration_path(iteration) %></td>
                             <% re =1 %><% break %>
                         <% else %>
-                            <td><%= iteration.score %></td>
+                            <td><%= link_to iteration.score, edit_iteration_path(iteration) %></td>
                             <% re =1 %><% break %>
                         <% end %>
                     <% end %>
@@ -35,6 +35,7 @@
                     <td><%= link_to "Object not created yet", "/iterations/single/#{project.id}/#{i}" %></td>
                 <% end %>
             <% end %>
+            <td><%=  link_to 'Edit this student', "/iterations/editRow/#{project.id}"%></td>
 <td><%= link_to 'Show', project %></td>
 </tr>
 <% end %>

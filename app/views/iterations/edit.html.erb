@@ -1,6 +1,7 @@
 <h1>Editing iteration</h1>
-
+<%= "For student #{Student.find(@iteration.student_id).name}" %>
+<%=  "Of iteration #{@iteration.iteNum}" %>
 <%= render 'form' %>
 
-<%= link_to 'Show', @iteration %> |
-<%= link_to 'Back', iterations_path %>
+
+<%= link_to 'Back', projects_path %>

@@ -1,0 +1,9 @@
+<h1>Welcome to HA Grading Worksheet</h1>
+<br /><br />
+<p id = "notice"><%=  notice %></p>
+<%=form_tag("/user/check", method: 'put')%>
+<p>Please Enter Username</p>
+<%= text_field_tag(:user)%><br />
+<p>And Password</p>
+<%= text_field_tag(:pwd)%><br />
+<%= submit_tag 'signin'%>

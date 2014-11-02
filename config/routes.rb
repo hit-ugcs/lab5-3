@@ -1,9 +1,14 @@
 Ttt::Application.routes.draw do
+  get "user/signin"
+  root :to => "user#signin"
+  match "/user/check" => "user#check"
   resources :iterations
   match "/iterations/:id/save" => "iterations#save", :via => 'put'
   match "/iterations/single/:id1/:id2" => "iterations#single"
-  match "/iterations/ediCol/:id" =>"iterations#editCol"
+  match "/iterations/editCol/:id" =>"iterations#editCol"
   match "/iterations/updateCol/:id" => "iterations#updateCol"
+  match "/iterations/editRow/:id" => "iterations#editRow"
+  match "/iterations/updateRow/:id" => "iterations#updateRow"
   resources :projects
 
 

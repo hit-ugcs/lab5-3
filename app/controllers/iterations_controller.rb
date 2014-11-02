@@ -15,6 +15,30 @@ class IterationsController < ApplicationController
     end
     return
   end
+  def editRow
+    @students = Student.all
+    c = 0
+    @students.each do |s|
+      if s.iterations.length >c
+        c = s.iterations.length
+      end
+    end
+
+    @id = params[:id]
+    @student = Student.find(Project.find(@id))
+    if c > @student.iterations.length
+      redirect_to projects_path, notice: "Some fields of this student is not created yet" and return 
+    end 
+    @iterations = Project.find(@id).iterations
+  end
+  def updateRow
+    @id = params[:id]
+    @iterations = Project.find(@id).iterations
+    @iterations.each do |i|
+      i.update_attributes(params[i.id.to_s])
+    end 
+    redirect_to projects_path and return 
+  end
   def editCol
     @editIte = params[:id]
     @students = Student.all
