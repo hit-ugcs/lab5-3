@@ -16,5 +16,6 @@ class ApplicationController < ActionController::Base
   			p.update_attributes(:score =>total/num)
   		end
   	end
+  	return
   end
 end
