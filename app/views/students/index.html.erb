@@ -4,7 +4,7 @@
   <tr>
     <th>Studentid</th>
     <th>Name</th>
-    <th><%= link_to 'Project', projects_path %></th>
+    <th><%= link_to 'Project', projects_path %>40%</th>
     <th></th>
     <th></th>
     <th></th>
@@ -14,7 +14,7 @@
   <tr>
     <td><%= student.studentID %></td>
     <td><%= student.name %></td>
-    <td><%= student.project.score %></td>
+    <td><%= student.project.score*0.4 %></td>
     <td><%= link_to 'Show', student %></td>
     <td><%= link_to 'Edit', edit_student_path(student) %></td>
     <td><%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
