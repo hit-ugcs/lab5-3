@@ -14,7 +14,7 @@
   <tr>
     <td><%= student.studentID %></td>
     <td><%= student.name %></td>
-    <% if student.project.name %>
+    <% if student.project.score %>
       <td><%= student.project.score*0.4 %></td>
     <% end %>
     <td><%= link_to 'Show', student %></td>
