@@ -1,9 +1,31 @@
 class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
+    after_filter  :proUpdate
+  def proUpdate
+    projects= Project.all
+    projects.each do |p|
+      total = 0
+      p.iterations do |i|
+        if i.score != nil
+          total = total +i.score
+        end
+      end
+      p.update_attributes(:score => total/p.iterations.length)
+    end
+    return
+  end
+
   def index
     @projects = Project.all
-
+    @c = 0
+    @projects.each do |p|
+      if p && p!=nil && p.iterations!=nil
+        if p.iterations.length > @c
+          @c = p.iterations.length
+        end
+      end
+    end
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @projects }

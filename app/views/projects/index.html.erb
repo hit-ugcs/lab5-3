@@ -1,23 +1,45 @@
 <h1>Listing projects</h1>
-
+<p id = "notice"><%= notice %></p>
 <table>
-  <tr>
-    <th>Student Name</th>
-    <th>Score</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+    <tr>
+        <th>Student Name</th>
+        <th>Score</th>
+        <% for i in 1..@c %>
+            <th><%= link_to "Iteration#{i}", :controller => 'iterations', :action =>'editCol', :id => i %></th>
+        <% end %>
+        <% if @projects.length > 0%>
+        <th><%= link_to 'New Iteration', :controller => 'iterations',:action =>'new' %></th>
+        <% end %>
+        <th></th>
+        <th></th>
+    </tr>
 
-<% @projects.each do |project| %>
-  <tr>
-    <td><%= Student.find(project.student_id).name %></td>
-    <td><%= project.score %></td>
-    <td><%= link_to 'Show', project %></td>
-  </tr>
+    <% @projects.each do |project| %>
+        <tr>
+            <td><%= Student.find(project.student_id).name %></td>
+            <td><%= project.score %></td>
+            <% for i in 1..@c do %>
+                <% re = 0%>
+                <% project.iterations.each do |iteration|%>
+                    <% if i == iteration.iteNum %>
+                        <% if iteration.score == nil %>
+                            <td><%= link_to "Not graded yet", edit_iteration_path(iteration) %></td>
+                            <% re =1 %><% break %>
+                        <% else %>
+                            <td><%= iteration.score %></td>
+                            <% re =1 %><% break %>
+                        <% end %>
+                    <% end %>
+                <% end %>
+                <% if re == 0 %>
+                    <td><%= link_to "Object not created yet", "/iterations/single/#{project.id}/#{i}" %></td>
+                <% end %>
+            <% end %>
+<td><%= link_to 'Show', project %></td>
+</tr>
 <% end %>
 </table>
 
 <br />
-<%= link_to 'frontpage', students_path%><br />
+<%= link_to 'frontpage', students_path %><br />
 <%= link_to 'New Project', new_project_path %>

@@ -1,4 +1,4 @@
-<%= form_for(@iteration) do |f| %>
+<%= form_for @iteration, url: iteration_path(@iteration.id) do |f| %>
   <% if @iteration.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@iteration.errors.count, "error") %> prohibited this iteration from being saved:</h2>
@@ -10,7 +10,6 @@
       </ul>
     </div>
   <% end %>
-
   <div class="field">
     <%= f.label :score %><br />
     <%= f.text_field :score %>

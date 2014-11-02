@@ -45,6 +45,7 @@ class StudentsController < ApplicationController
     respond_to do |format|
       if @student.save
         @project = Project.create(score: nil, student_id: @student.id)
+        @iteration = Iteration.create(iteNum: 1, score: nil, project_id: @project.id, student_id: @student.id )
         format.html { redirect_to @student, notice: 'Student was successfully created.' }
         format.json { render json: @student, status: :created, location: @student }
       else
@@ -74,6 +75,7 @@ class StudentsController < ApplicationController
   # DELETE /students/1.json
   def destroy
     @student = Student.find(params[:id])
+    @student.project.destroy
     @student.destroy
 
     respond_to do |format|

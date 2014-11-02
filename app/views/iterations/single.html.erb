@@ -1,0 +1,7 @@
+<p>Here you will create a iteration grade for student:</p>
+<p><%= Student.find(@iteration.student_id).name%></p>
+<%= "Because his iteration #{@iteration.iteNum} is missing" %>
+<p>His score is</p>
+
+<%= render 'form' %>
+

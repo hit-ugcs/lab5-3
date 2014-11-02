@@ -2,22 +2,24 @@
 
 <table>
   <tr>
+    <th>Student Name</th>
     <th>Score</th>
     <th></th>
     <th></th>
     <th></th>
   </tr>
 
-<% @iterations.each do |iteration| %>
+<% @students.each do |s| %>
   <tr>
-    <td><%= iteration.score %></td>
-    <td><%= link_to 'Show', iteration %></td>
-    <td><%= link_to 'Edit', edit_iteration_path(iteration) %></td>
-    <td><%= link_to 'Destroy', iteration, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%=  s.name %></td>
+    <% s.iterations.each do |i|%>
+      <td><%= i.score %></td>
+      <td><%= link_to 'Edit', edit_iteration_path(i) %></td>
+    <% end %>
   </tr>
 <% end %>
 </table>
 
 <br />
-
+<%= link_to 'Back', projects_path %>
 <%= link_to 'New Iteration', new_iteration_path %>

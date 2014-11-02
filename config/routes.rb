@@ -1,7 +1,9 @@
 Ttt::Application.routes.draw do
   resources :iterations
-
-
+  match "/iterations/:id/save" => "iterations#save", :via => 'put'
+  match "/iterations/single/:id1/:id2" => "iterations#single"
+  match "/iterations/ediCol/:id" =>"iterations#editCol"
+  match "/iterations/updateCol/:id" => "iterations#updateCol"
   resources :projects
 
 

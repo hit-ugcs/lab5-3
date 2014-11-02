@@ -1,0 +1,14 @@
+<%= "You are editing grades for iteration #{@editIte}" %>
+
+
+
+<%= form_tag("/iterations/updateCol/#{@editIte}", method: "put")%>
+<table>
+	<% @iterations.each do |i|%>
+		<tr>
+			<td><%= Student.find(i.student_id).name%></td>
+			<td><%= text_field(i.id, :score)%></td>
+		</tr>
+	<% end %>
+</table>
+<%= submit_tag 'save' %>
