@@ -12,7 +12,9 @@ class ApplicationController < ActionController::Base
   				num = num +1
   			end 
   		end 
-  		p.update_attributes(:score =>total/num)
+  		if(num != 0)
+  			p.update_attributes(:score =>total/num)
+  		end
   	end
   end
 end
