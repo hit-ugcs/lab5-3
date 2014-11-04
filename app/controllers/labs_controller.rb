@@ -14,7 +14,7 @@ class LabsController < ApplicationController
           num = num +1
         end
       end 
-      if num
+      if num !=0 
         l.update_attributes(score: total/num)
       end
     end
