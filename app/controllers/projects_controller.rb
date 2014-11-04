@@ -2,7 +2,7 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
     after_filter  :updateScore
-  def updateSore
+  def updateScore
     projects= Project.all
     projects.each do |p|
       total = 0
