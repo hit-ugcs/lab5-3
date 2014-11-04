@@ -16,22 +16,21 @@
 <% @students.each do |student| %>
   <tr>
     <td><%= link_to 'Edit', edit_student_path(student) %></td>
-
     <td><%= student.studentID %></td>
     <td><%= student.name %></td>
-    <td><% if student.project.score != nil %>
+    <td><% if student.project != nil && student.project.score != nil %>
       <%= student.project.score*0.4 %>
     <% end %></td>
-    <td><% if student.final.score != nil %>
+    <td><% if student.final != nil && student.final.score != nil %>
       <%= student.final.score*0.4 %>
     <% end %></td>
-    <td><% if student.lab.score != nil %>
+    <td><% if student.lab != nil && student.lab.score != nil %>
       <%= student.lab.score*0.1 %>
     <% end %></td>
-    <td><% if student.disc.score != nil %>
+    <td><% if student.disc != nil && student.disc.score != nil %>
       <%= student.disc.score*0.05 %>
     <% end %></td>
-    <td><% if student.atten.score != nil %>
+    <td><% if student.atten != nil && student.atten.score != nil %>
       <%= student.atten.score*0.05 %>
     <% end %></td>
     <td>
