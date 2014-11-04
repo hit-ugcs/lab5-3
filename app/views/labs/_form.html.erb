@@ -1,0 +1,53 @@
+<%= form_for(@lab) do |f| %>
+  <% if @lab.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@lab.errors.count, "error") %> prohibited this lab from being saved:</h2>
+
+      <ul>
+      <% @lab.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :student_id %><br />
+    <%= f.number_field :student_id %>
+  </div>
+  <div class="field">
+    <%= f.label :score %><br />
+    <%= f.text_field :score %>
+  </div>
+  <div class="field">
+    <%= f.label :lab1 %><br />
+    <%= f.text_field :lab1 %>
+  </div>
+  <div class="field">
+    <%= f.label :lab2 %><br />
+    <%= f.text_field :lab2 %>
+  </div>
+  <div class="field">
+    <%= f.label :lab3 %><br />
+    <%= f.text_field :lab3 %>
+  </div>
+  <div class="field">
+    <%= f.label :lab4 %><br />
+    <%= f.text_field :lab4 %>
+  </div>
+  <div class="field">
+    <%= f.label :lab5 %><br />
+    <%= f.text_field :lab5 %>
+  </div>
+  <div class="field">
+    <%= f.label :lab6 %><br />
+    <%= f.text_field :lab6 %>
+  </div>
+  <div class="field">
+    <%= f.label :lab7 %><br />
+    <%= f.text_field :lab7 %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

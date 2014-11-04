@@ -1,0 +1,47 @@
+<h1>Listing attens</h1>
+
+<table>
+  <tr>
+    <th>Student</th>
+    <th>Score</th>
+    <th>Week1</th>
+    <th>Week2</th>
+    <th>Week3</th>
+    <th>Week4</th>
+    <th>Week5</th>
+    <th>Week6</th>
+    <th>Week7</th>
+    <th>Week8</th>
+    <th>Week9</th>
+    <th>Week10</th>
+    <th>Week11</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @attens.each do |atten| %>
+  <tr>
+    <td><%= atten.student_id %></td>
+    <td><%= atten.score %></td>
+    <td><%= atten.week1 %></td>
+    <td><%= atten.week2 %></td>
+    <td><%= atten.week3 %></td>
+    <td><%= atten.week4 %></td>
+    <td><%= atten.week5 %></td>
+    <td><%= atten.week6 %></td>
+    <td><%= atten.week7 %></td>
+    <td><%= atten.week8 %></td>
+    <td><%= atten.week9 %></td>
+    <td><%= atten.week10 %></td>
+    <td><%= atten.week11 %></td>
+    <td><%= link_to 'Show', atten %></td>
+    <td><%= link_to 'Edit', edit_atten_path(atten) %></td>
+    <td><%= link_to 'Destroy', atten, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Atten', new_atten_path %>

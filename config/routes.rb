@@ -1,4 +1,16 @@
 Ttt::Application.routes.draw do
+  resources :attens
+
+
+  resources :discs
+
+
+  resources :finals
+
+
+  resources :labs
+
+
   get "user/signin"
   root :to => "user#signin"
   match "/user/check" => "user#check"

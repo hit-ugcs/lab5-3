@@ -1,0 +1,47 @@
+<h1>Listing discs</h1>
+
+<table>
+  <tr>
+    <th>Student</th>
+    <th>Score</th>
+    <th>Week1</th>
+    <th>Week2</th>
+    <th>Week3</th>
+    <th>Week4</th>
+    <th>Week5</th>
+    <th>Week6</th>
+    <th>Week7</th>
+    <th>Week8</th>
+    <th>Week9</th>
+    <th>Week10</th>
+    <th>Week11</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @discs.each do |disc| %>
+  <tr>
+    <td><%= disc.student_id %></td>
+    <td><%= disc.score %></td>
+    <td><%= disc.week1 %></td>
+    <td><%= disc.week2 %></td>
+    <td><%= disc.week3 %></td>
+    <td><%= disc.week4 %></td>
+    <td><%= disc.week5 %></td>
+    <td><%= disc.week6 %></td>
+    <td><%= disc.week7 %></td>
+    <td><%= disc.week8 %></td>
+    <td><%= disc.week9 %></td>
+    <td><%= disc.week10 %></td>
+    <td><%= disc.week11 %></td>
+    <td><%= link_to 'Show', disc %></td>
+    <td><%= link_to 'Edit', edit_disc_path(disc) %></td>
+    <td><%= link_to 'Destroy', disc, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Disc', new_disc_path %>

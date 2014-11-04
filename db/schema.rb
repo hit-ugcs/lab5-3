@@ -11,13 +11,70 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141025084904) do
+ActiveRecord::Schema.define(:version => 20141104011002) do
+
+  create_table "attens", :force => true do |t|
+    t.integer  "student_id"
+    t.decimal  "score"
+    t.decimal  "week1"
+    t.decimal  "week2"
+    t.decimal  "week3"
+    t.decimal  "week4"
+    t.decimal  "week5"
+    t.decimal  "week6"
+    t.decimal  "week7"
+    t.decimal  "week8"
+    t.decimal  "week9"
+    t.decimal  "week10"
+    t.decimal  "week11"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "discs", :force => true do |t|
+    t.integer  "student_id"
+    t.decimal  "score"
+    t.decimal  "week1"
+    t.decimal  "week2"
+    t.decimal  "week3"
+    t.decimal  "week4"
+    t.decimal  "week5"
+    t.decimal  "week6"
+    t.decimal  "week7"
+    t.decimal  "week8"
+    t.decimal  "week9"
+    t.decimal  "week10"
+    t.decimal  "week11"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "finals", :force => true do |t|
+    t.decimal  "score"
+    t.integer  "student_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "iterations", :force => true do |t|
     t.decimal  "score"
     t.integer  "iteNum"
     t.integer  "student_id"
     t.integer  "project_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "labs", :force => true do |t|
+    t.integer  "student_id"
+    t.decimal  "score"
+    t.decimal  "lab1"
+    t.decimal  "lab2"
+    t.decimal  "lab3"
+    t.decimal  "lab4"
+    t.decimal  "lab5"
+    t.decimal  "lab6"
+    t.decimal  "lab7"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

@@ -1,0 +1,39 @@
+<h1>Listing labs</h1>
+
+<table>
+  <tr>
+    <th>Student</th>
+    <th>Score</th>
+    <th>Lab1</th>
+    <th>Lab2</th>
+    <th>Lab3</th>
+    <th>Lab4</th>
+    <th>Lab5</th>
+    <th>Lab6</th>
+    <th>Lab7</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @labs.each do |lab| %>
+  <tr>
+    <td><%= Studnet.find(lab.student_id).name %></td>
+    <td><%= lab.score %></td>
+    <td><%= lab.lab1 %></td>
+    <td><%= lab.lab2 %></td>
+    <td><%= lab.lab3 %></td>
+    <td><%= lab.lab4 %></td>
+    <td><%= lab.lab5 %></td>
+    <td><%= lab.lab6 %></td>
+    <td><%= lab.lab7 %></td>
+    <td><%= link_to 'Show', lab %></td>
+    <td><%= link_to 'Edit', edit_lab_path(lab) %></td>
+    <td><%= link_to 'Destroy', lab, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Lab', new_lab_path %>

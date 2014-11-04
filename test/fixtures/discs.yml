@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  student_id: 1
+  score: 9.99
+  week1: 9.99
+  week2: 9.99
+  week3: 9.99
+  week4: 9.99
+  week5: 9.99
+  week6: 9.99
+  week7: 9.99
+  week8: 9.99
+  week9: 9.99
+  week10: 9.99
+  week11: 9.99
+
+two:
+  student_id: 1
+  score: 9.99
+  week1: 9.99
+  week2: 9.99
+  week3: 9.99
+  week4: 9.99
+  week5: 9.99
+  week6: 9.99
+  week7: 9.99
+  week8: 9.99
+  week9: 9.99
+  week10: 9.99
+  week11: 9.99

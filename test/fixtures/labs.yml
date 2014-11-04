@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  student_id: 1
+  score: 9.99
+  lab1: 9.99
+  lab2: 9.99
+  lab3: 9.99
+  lab4: 9.99
+  lab5: 9.99
+  lab6: 9.99
+  lab7: 9.99
+
+two:
+  student_id: 1
+  score: 9.99
+  lab1: 9.99
+  lab2: 9.99
+  lab3: 9.99
+  lab4: 9.99
+  lab5: 9.99
+  lab6: 9.99
+  lab7: 9.99

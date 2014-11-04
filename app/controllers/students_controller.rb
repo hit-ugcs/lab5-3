@@ -46,6 +46,7 @@ class StudentsController < ApplicationController
       if @student.save
         @project = Project.create(score: nil, student_id: @student.id)
         @iteration = Iteration.create(iteNum: 1, score: nil, project_id: @project.id, student_id: @student.id )
+        @lab = Lab.create(student_id: @student.id)
         format.html { redirect_to @student, notice: 'Student was successfully created.' }
         format.json { render json: @student, status: :created, location: @student }
       else

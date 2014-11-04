@@ -1,0 +1,69 @@
+<%= form_for(@disc) do |f| %>
+  <% if @disc.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@disc.errors.count, "error") %> prohibited this disc from being saved:</h2>
+
+      <ul>
+      <% @disc.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :student_id %><br />
+    <%= f.number_field :student_id %>
+  </div>
+  <div class="field">
+    <%= f.label :score %><br />
+    <%= f.text_field :score %>
+  </div>
+  <div class="field">
+    <%= f.label :week1 %><br />
+    <%= f.text_field :week1 %>
+  </div>
+  <div class="field">
+    <%= f.label :week2 %><br />
+    <%= f.text_field :week2 %>
+  </div>
+  <div class="field">
+    <%= f.label :week3 %><br />
+    <%= f.text_field :week3 %>
+  </div>
+  <div class="field">
+    <%= f.label :week4 %><br />
+    <%= f.text_field :week4 %>
+  </div>
+  <div class="field">
+    <%= f.label :week5 %><br />
+    <%= f.text_field :week5 %>
+  </div>
+  <div class="field">
+    <%= f.label :week6 %><br />
+    <%= f.text_field :week6 %>
+  </div>
+  <div class="field">
+    <%= f.label :week7 %><br />
+    <%= f.text_field :week7 %>
+  </div>
+  <div class="field">
+    <%= f.label :week8 %><br />
+    <%= f.text_field :week8 %>
+  </div>
+  <div class="field">
+    <%= f.label :week9 %><br />
+    <%= f.text_field :week9 %>
+  </div>
+  <div class="field">
+    <%= f.label :week10 %><br />
+    <%= f.text_field :week10 %>
+  </div>
+  <div class="field">
+    <%= f.label :week11 %><br />
+    <%= f.text_field :week11 %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
