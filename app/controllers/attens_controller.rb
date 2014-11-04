@@ -13,8 +13,8 @@ class AttensController < ApplicationController
           total = total +s 
           num = num +1
         end
-      end 
-      if num
+      end  
+      if num !=0
       a.update_attributes(score: total/num)
     end
     end

@@ -14,7 +14,7 @@ class DiscsController < ApplicationController
           num = num +1
         end
       end 
-      if num
+      if num !=0 
       d.update_attributes(score: total/num)
     end
     end
