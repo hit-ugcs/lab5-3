@@ -14,7 +14,9 @@ class AttensController < ApplicationController
           num = num +1
         end
       end 
+      if num
       a.update_attributes(score: total/num)
+    end
     end
   end
   def editRow

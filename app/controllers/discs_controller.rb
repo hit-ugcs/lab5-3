@@ -14,7 +14,9 @@ class DiscsController < ApplicationController
           num = num +1
         end
       end 
+      if num
       d.update_attributes(score: total/num)
+    end
     end
   end
   def editRow

@@ -14,7 +14,9 @@ class LabsController < ApplicationController
           num = num +1
         end
       end 
-      l.update_attributes(score: total/num)
+      if num
+        l.update_attributes(score: total/num)
+      end
     end
   end
   def editRow
