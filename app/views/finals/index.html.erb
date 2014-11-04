@@ -1,25 +1,21 @@
-<h1>Listing finals</h1>
+<h1>Listing Final Scores</h1>
 
 <table>
   <tr>
-    <th>Score</th>
     <th>Student</th>
-    <th></th>
-    <th></th>
+    <th><%= link_to 'Score', :controller => 'finals', :action =>'editRow' %></th>
     <th></th>
   </tr>
 
 <% @finals.each do |final| %>
   <tr>
+    <td><%= Student.find(final.student_id).name %></td>
     <td><%= final.score %></td>
-    <td><%= final.student_id %></td>
-    <td><%= link_to 'Show', final %></td>
     <td><%= link_to 'Edit', edit_final_path(final) %></td>
-    <td><%= link_to 'Destroy', final, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Final', new_final_path %>
+<%= link_to 'Frontpage', students_path %>

@@ -47,6 +47,9 @@ class StudentsController < ApplicationController
         @project = Project.create(score: nil, student_id: @student.id)
         @iteration = Iteration.create(iteNum: 1, score: nil, project_id: @project.id, student_id: @student.id )
         @lab = Lab.create(student_id: @student.id)
+        @final  = Final.create(student_id: @student.id)
+        @disc = Disc.create(student_id: @student.id)
+        @atten = Atten.create(student_id: @student.id)
         format.html { redirect_to @student, notice: 'Student was successfully created.' }
         format.json { render json: @student, status: :created, location: @student }
       else
@@ -63,7 +66,7 @@ class StudentsController < ApplicationController
 
     respond_to do |format|
       if @student.update_attributes(params[:student])
-        format.html { redirect_to @student, notice: 'Student was successfully updated.' }
+        format.html { redirect_to students_path, notice: 'Student was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

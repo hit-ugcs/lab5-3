@@ -1,4 +1,4 @@
-<h1>Listing projects</h1>
+<h1>Listing Project Scores</h1>
 <p id = "notice"><%= notice %></p>
 <table>
     <tr>
@@ -18,7 +18,7 @@
         <% if project && project != nil %>
         <tr>
             <td><%= Student.find(project.student_id).name %></td>
-            <td><%= project.score %></td>
+            <td><%= project.score.to_i %></td>
             <% for i in 1..@c do %>
                 <% re = 0%>
                 <% project.iterations.each do |iteration|%>
@@ -36,8 +36,8 @@
                     <td><%= link_to "Object not created yet", "/iterations/single/#{project.id}/#{i}" %></td>
                 <% end %>
             <% end %>
+            <td></td>
             <td><%=  link_to 'Edit this student', "/iterations/editRow/#{project.id}"%></td>
-<td><%= link_to 'Show', project %></td>
 </tr>
 <% end %>
 <% end %>
@@ -45,4 +45,4 @@
 
 <br />
 <%= link_to 'frontpage', students_path %><br />
-<%= link_to 'New Project', new_project_path %>
+

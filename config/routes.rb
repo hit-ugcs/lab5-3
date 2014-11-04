@@ -1,19 +1,28 @@
 Ttt::Application.routes.draw do
+  root :to => "students#index"
+  devise_for :users
+
+  resources :students
+
+  match "/attens/updateRow/:id" => "attens#updateRow"
+  match "/attens/editRow/:id" => "attens#editRow"
   resources :attens
 
-
+  match "/discs/updateRow/:id" => "discs#updateRow"
+  match "/discs/editRow/:id" => "discs#editRow"
   resources :discs
 
-
+  match "/finals/updateRow" => "finals#updateRow"
+  match "/finals/editRow" => "finals#editRow"
   resources :finals
 
 
+  match "labs/editRow/:id" =>"labs#editRow"
+  match "labs/updateRow/:id" =>"labs#updateRow"
   resources :labs
 
 
-  get "user/signin"
-  root :to => "user#signin"
-  match "/user/check" => "user#check"
+
   resources :iterations
   match "/iterations/:id/save" => "iterations#save", :via => 'put'
   match "/iterations/single/:id1/:id2" => "iterations#single"
@@ -24,7 +33,7 @@ Ttt::Application.routes.draw do
   resources :projects
 
 
-  resources :students
+
 
 
   # The priority is based upon order of creation:

@@ -1,0 +1,17 @@
+<h1>You are editing final score</h1>
+<p>For all students</p>
+<%= form_tag("/finals/updateRow", method: "put") %>
+	<table>
+		<tr>
+			<td>Name</td>
+			<td>Score</td>
+		</tr>
+	<% @finals.each do |f| %>
+		<tr>
+			<td><%= Student.find(f.student_id).name %></td>
+			<td><%= text_field(f.id, :score, :value => f.score)%></td>
+		</tr>
+	<% end %>
+	</table>
+<%= submit_tag 'save' %>
+<%= link_to 'Back', finals_path %>

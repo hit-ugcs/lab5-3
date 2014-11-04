@@ -1,16 +1,16 @@
-<h1>Listing labs</h1>
+<h1>Listing Lab Scores</h1>
 
 <table>
   <tr>
     <th>Student</th>
     <th>Score</th>
-    <th>Lab1</th>
-    <th>Lab2</th>
-    <th>Lab3</th>
-    <th>Lab4</th>
-    <th>Lab5</th>
-    <th>Lab6</th>
-    <th>Lab7</th>
+    <th><%= link_to 'Lab1', "/labs/editRow/lab1" %></th>
+    <th><%= link_to 'Lab2', "/labs/editRow/lab2" %></th>
+    <th><%= link_to'Lab3', "/labs/editRow/lab3" %></th>
+    <th><%= link_to'Lab4', "/labs/editRow/lab4" %></th>
+    <th><%= link_to'Lab5', "/labs/editRow/lab5" %></th>
+    <th><%= link_to'Lab6', "/labs/editRow/lab6" %></th>
+    <th><%= link_to'Lab7', "/labs/editRow/lab7" %></th>
     <th></th>
     <th></th>
     <th></th>
@@ -18,7 +18,7 @@
 
 <% @labs.each do |lab| %>
   <tr>
-    <td><%= Studnet.find(lab.student_id).name %></td>
+    <td><%= Student.find(lab.student_id).name %></td>
     <td><%= lab.score %></td>
     <td><%= lab.lab1 %></td>
     <td><%= lab.lab2 %></td>
@@ -27,13 +27,12 @@
     <td><%= lab.lab5 %></td>
     <td><%= lab.lab6 %></td>
     <td><%= lab.lab7 %></td>
-    <td><%= link_to 'Show', lab %></td>
     <td><%= link_to 'Edit', edit_lab_path(lab) %></td>
-    <td><%= link_to 'Destroy', lab, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Lab', new_lab_path %>
+<%= link_to 'Frontpage', students_path %>

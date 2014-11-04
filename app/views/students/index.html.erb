@@ -1,7 +1,7 @@
 <h1>Listing students</h1>
-<p id = "notice"><%= notice%></p>
 <table>
   <tr>
+    <th></th>
     <th>Studentid</th>
     <th>Name</th>
     <th><%= link_to 'Project', projects_path %>40%</th>
@@ -9,20 +9,36 @@
     <th><%= link_to 'Lab', labs_path %>10%</th>
     <th><%= link_to 'Class Discussion', discs_path %>5%</th>
     <th><%= link_to 'Attendence', attens_path %>5%</th>
-    <th></th>
-    <th></th>
+    <th>Sum</th>
     <th></th>
   </tr>
 
 <% @students.each do |student| %>
   <tr>
+    <td><%= link_to 'Edit', edit_student_path(student) %></td>
+
     <td><%= student.studentID %></td>
     <td><%= student.name %></td>
-    <% if student.project.score %>
-      <td><%= student.project.score*0.4 %></td>
-    <% end %>
-    <td><%= link_to 'Show', student %></td>
-    <td><%= link_to 'Edit', edit_student_path(student) %></td>
+    <td><% if student.project.score != nil %>
+      <%= student.project.score*0.4 %>
+    <% end %></td>
+    <td><% if student.final.score != nil %>
+      <%= student.final.score*0.4 %>
+    <% end %></td>
+    <td><% if student.lab.score != nil %>
+      <%= student.lab.score*0.1 %>
+    <% end %></td>
+    <td><% if student.disc.score != nil %>
+      <%= student.disc.score*0.05 %>
+    <% end %></td>
+    <td><% if student.atten.score != nil %>
+      <%= student.atten.score*0.05 %>
+    <% end %></td>
+    <td>
+      <% if student.project.score != nil && student.final.score != nil &&student.lab.score != nil && student.disc.score != nil && student.atten.score != nil %>
+      <%= student.project.score*0.4+student.final.score*0.4+student.lab.score*0.1+student.disc.score*0.05+student.atten.score*0.05%>
+      <% end %>
+    </td>
     <td><%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>

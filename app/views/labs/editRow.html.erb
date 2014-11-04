@@ -1,0 +1,17 @@
+<h1>You are editing lab scores</h1>
+<p>For <%= params[:id]%></p>
+<%= form_tag("/labs/updateRow/#{params[:id]}", method: "put") %>
+	<table>
+		<tr>
+			<td>Name</td>
+			<td>Score</td>
+		</tr>
+		<% @labs.each do |l|%>
+			<tr>
+				<td><%= Student.find(l.student_id).name%></td>
+				<td><%= text_field(l.id, params[:id],:value => l.send(params[:id]))%></td>
+			</tr>
+		<% end %>
+	</table>
+<%= submit_tag 'Save' %>
+<%= link_to 'Back', labs_path %>

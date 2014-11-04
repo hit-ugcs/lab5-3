@@ -1,6 +1,5 @@
-<h1>Editing atten</h1>
-
+<h1>You are editing attendence scores</h1>
+<p>For student: <%= Student.find(@atten.id).name %>
 <%= render 'form' %>
 
-<%= link_to 'Show', @atten %> |
 <%= link_to 'Back', attens_path %>

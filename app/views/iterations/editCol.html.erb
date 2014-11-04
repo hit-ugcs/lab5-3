@@ -7,7 +7,7 @@
 	<% @iterations.each do |i|%>
 		<tr>
 			<td><%= Student.find(i.student_id).name%></td>
-			<td><%= text_field(i.id, :score)%></td>
+			<td><%= text_field(i.id, :score, :value => i.score ) %></td>
 		</tr>
 	<% end %>
 </table>

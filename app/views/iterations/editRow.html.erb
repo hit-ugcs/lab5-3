@@ -5,7 +5,7 @@
 	<% @iterations.each do |i| %>
 		<tr>
 			<td><%= "Iteration#{i.iteNum}"%></td>
-			<td><%= text_field(i.id, :score)%></td>
+			<td><%= text_field(i.id, :score, :value => i.score)%></td>
 		</tr>
 	<% end %>
 </table>

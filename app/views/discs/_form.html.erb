@@ -11,14 +11,8 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :student_id %><br />
-    <%= f.number_field :student_id %>
-  </div>
-  <div class="field">
-    <%= f.label :score %><br />
-    <%= f.text_field :score %>
-  </div>
+
+
   <div class="field">
     <%= f.label :week1 %><br />
     <%= f.text_field :week1 %>
@@ -64,6 +58,6 @@
     <%= f.text_field :week11 %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Save' %>
   </div>
 <% end %>

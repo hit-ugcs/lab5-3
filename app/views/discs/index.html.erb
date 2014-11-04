@@ -1,20 +1,21 @@
-<h1>Listing discs</h1>
+<h1>Listing Class Discussion Scores</h1>
 
 <table>
   <tr>
     <th>Student</th>
     <th>Score</th>
-    <th>Week1</th>
-    <th>Week2</th>
-    <th>Week3</th>
-    <th>Week4</th>
-    <th>Week5</th>
-    <th>Week6</th>
-    <th>Week7</th>
-    <th>Week8</th>
-    <th>Week9</th>
-    <th>Week10</th>
-    <th>Week11</th>
+    <th><%= link_to 'Week1', "/discs/editRow/week1" %></th>
+    <th><%= link_to 'Week2', "/discs/editRow/week2" %></th>
+    <th><%= link_to 'Week3', "/discs/editRow/week3" %></th>
+    <th><%= link_to 'Week4', "/discs/editRow/week4" %></th>
+    <th><%= link_to 'Week5', "/discs/editRow/week5" %></th>
+    <th><%= link_to 'Week6', "/discs/editRow/week6" %></th>
+    <th><%= link_to 'Week7', "/discs/editRow/week7" %></th>
+    <th><%= link_to 'Week8', "/discs/editRow/week8" %></th>
+    <th><%= link_to 'Week9', "/discs/editRow/week9" %></th>
+    <th><%= link_to 'Week10', "/discs/editRow/week10" %></th>
+    <th><%= link_to 'Week11', "/discs/editRow/week11" %></th>
+
     <th></th>
     <th></th>
     <th></th>
@@ -22,7 +23,7 @@
 
 <% @discs.each do |disc| %>
   <tr>
-    <td><%= disc.student_id %></td>
+    <td><%= Student.find(disc.student_id).name %></td>
     <td><%= disc.score %></td>
     <td><%= disc.week1 %></td>
     <td><%= disc.week2 %></td>
@@ -35,13 +36,11 @@
     <td><%= disc.week9 %></td>
     <td><%= disc.week10 %></td>
     <td><%= disc.week11 %></td>
-    <td><%= link_to 'Show', disc %></td>
     <td><%= link_to 'Edit', edit_disc_path(disc) %></td>
-    <td><%= link_to 'Destroy', disc, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Disc', new_disc_path %>
+<%= link_to 'Frontpage', students_path %>

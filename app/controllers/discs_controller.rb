@@ -1,6 +1,32 @@
 class DiscsController < ApplicationController
   # GET /discs
   # GET /discs.json
+  after_filter :updateScore
+  def updateScore
+    discs = Disc.all
+    discs.each do |d|
+      total = 0
+      s = 0
+      num = 0 
+      for i in 1..11 do 
+        if s = d.send("week#{i}")
+          total = total +s 
+          num = num +1
+        end
+      end 
+      d.update_attributes(score: total/num)
+    end
+  end
+  def editRow
+    @discs = Disc.all
+  end
+  def updateRow
+    discs = Disc.all
+    discs.each do |d|
+      d.update_attributes(params[d.id.to_s])
+    end 
+    redirect_to discs_path
+  end
   def index
     @discs = Disc.all
 
@@ -60,7 +86,7 @@ class DiscsController < ApplicationController
 
     respond_to do |format|
       if @disc.update_attributes(params[:disc])
-        format.html { redirect_to @disc, notice: 'Disc was successfully updated.' }
+        format.html { redirect_to discs_path, notice: 'Disc was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

@@ -1,6 +1,32 @@
 class LabsController < ApplicationController
   # GET /labs
   # GET /labs.json
+  after_filter :updateScore
+  def updateScore
+    labs = Lab.all
+    labs.each do |l|
+      total = 0
+      s = 0
+      num = 0 
+      for i in 1..7 do 
+        if s = l.send("lab#{i}")
+          total = total +s 
+          num = num +1
+        end
+      end 
+      l.update_attributes(score: total/num)
+    end
+  end
+  def editRow
+    @labs= Lab.all
+  end
+  def updateRow
+    labs = Lab.all
+    labs.each do |l|
+      l.update_attributes(params[l.id.to_s])
+    end 
+    redirect_to labs_path
+  end
   def index
     @labs = Lab.all
 
@@ -44,7 +70,7 @@ class LabsController < ApplicationController
 
     respond_to do |format|
       if @lab.save
-        format.html { redirect_to @lab, notice: 'Lab was successfully created.' }
+        format.html { redirect_to labs_path, notice: 'Lab was successfully created.' }
         format.json { render json: @lab, status: :created, location: @lab }
       else
         format.html { render action: "new" }
@@ -60,7 +86,7 @@ class LabsController < ApplicationController
 
     respond_to do |format|
       if @lab.update_attributes(params[:lab])
-        format.html { redirect_to @lab, notice: 'Lab was successfully updated.' }
+        format.html { redirect_to labs_path, notice: 'Lab was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

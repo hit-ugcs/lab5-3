@@ -1,6 +1,32 @@
 class AttensController < ApplicationController
   # GET /attens
   # GET /attens.json
+  after_filter :updateScore
+  def updateScore
+    attens = Atten.all
+    attens.each do |a|
+      total = 0
+      s = 0
+      num = 0 
+      for i in 1..11 do 
+        if s = a.send("week#{i}")
+          total = total +s 
+          num = num +1
+        end
+      end 
+      a.update_attributes(score: total/num)
+    end
+  end
+  def editRow
+    @attens = Atten.all
+  end
+  def updateRow
+    attens = Atten.all
+    attens.each do |a|
+      a.update_attributes(params[a.id.to_s])
+    end 
+    redirect_to attens_path
+  end
   def index
     @attens = Atten.all
 
@@ -60,7 +86,7 @@ class AttensController < ApplicationController
 
     respond_to do |format|
       if @atten.update_attributes(params[:atten])
-        format.html { redirect_to @atten, notice: 'Atten was successfully updated.' }
+        format.html { redirect_to attens_path, notice: 'Atten was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

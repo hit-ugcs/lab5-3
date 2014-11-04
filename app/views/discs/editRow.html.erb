@@ -1,0 +1,17 @@
+<h1>You are editing class discussion scores</h1>
+<p>For: <%= params[:id]%></p>
+<%= form_tag("/discs/updateRow/#{params[:id]}", method: "put") %>
+	<table>
+		<tr>
+			<td>Name</td>
+			<td>Score</td>
+		</tr>
+		<% @discs.each do |d|%>
+			<tr>
+				<td><%= Student.find(d.student_id).name%></td>
+				<td><%= text_field(d.id, params[:id],:value => d.send(params[:id]))%></td>
+			</tr>
+		<% end %>
+	</table>
+<%= submit_tag 'save' %>
+<%= link_to 'Back', discs_path %>

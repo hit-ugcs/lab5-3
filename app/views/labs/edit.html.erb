@@ -1,6 +1,5 @@
-<h1>Editing lab</h1>
-
+<h1>You are editing lab scores</h1>
+<p>For student: <%= Student.find(@lab.student_id).name %></p>
 <%= render 'form' %>
 
-<%= link_to 'Show', @lab %> |
 <%= link_to 'Back', labs_path %>

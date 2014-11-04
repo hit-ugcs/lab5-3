@@ -1,0 +1,16 @@
+<h1>You are editing attendence scores</h1>
+<p>For <%= params[:id]%> </p>
+<%= form_tag("/attens/updateRow/#{params[:id]}", method: "put") %>
+	<table>
+		<tr>
+			<td>Name</td>
+			<td>Score</td>
+		</tr>
+		<% @attens.each do |a|%>
+			<tr>
+				<td><%= Student.find(a.student_id).name%></td>
+				<td><%= text_field(a.id, params[:id],:value => a.send(params[:id]))%></td>
+			</tr>
+		<% end %>
+	</table>
+<%= submit_tag 'Save' %>

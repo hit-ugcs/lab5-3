@@ -1,12 +1,12 @@
 class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
-    after_filter  :proUpdate
-  def proUpdate
+    after_filter  :updateScore
+  def updateSore
     projects= Project.all
     projects.each do |p|
       total = 0
-      p.iterations do |i|
+      p.iterations.each do |i|
         if i.score != nil
           total = total +i.score
         end
@@ -82,7 +82,7 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       if @project.update_attributes(params[:project])
-        format.html { redirect_to @project, notice: 'Project was successfully updated.' }
+        format.html { redirect_to projects_path, notice: 'Project was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

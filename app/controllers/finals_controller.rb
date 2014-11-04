@@ -1,6 +1,16 @@
 class FinalsController < ApplicationController
   # GET /finals
   # GET /finals.json
+  def editRow
+    @finals = Final.all
+  end
+  def updateRow
+    finals = Final.all
+    finals.each do |f|
+      f.update_attributes(params[f.id.to_s])
+    end
+    redirect_to finals_path
+  end
   def index
     @finals = Final.all
 
@@ -60,7 +70,7 @@ class FinalsController < ApplicationController
 
     respond_to do |format|
       if @final.update_attributes(params[:final])
-        format.html { redirect_to @final, notice: 'Final was successfully updated.' }
+        format.html { redirect_to finals_path, notice: 'Final was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
