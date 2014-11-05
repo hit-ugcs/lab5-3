@@ -1,7 +1,6 @@
 <h1>Listing students</h1>
 <table>
   <tr>
-    <th></th>
     <th>Studentid</th>
     <th>Name</th>
     <th><%= link_to 'Project', projects_path %>40%</th>
@@ -15,9 +14,9 @@
 
 <% @students.each do |student| %>
   <tr>
-    <td><%= link_to 'Edit', edit_student_path(student) %></td>
     <td><%= student.studentID %></td>
-    <td><%= student.name %></td>
+    <td><%= link_to student.name, "javascript:void(0)", :onclick => "window.open('/students/#{student.id}/edit','aa',
+    		'height=500,width=300,location=no' )" %></td>
     <td><% if student.project != nil && student.project.score != nil %>
       <%= student.project.score*0.4 %>
     <% end %></td>
@@ -44,5 +43,5 @@
 </table>
 
 <br />
-
+<a href = "javascript:void(0)" onclick = window.open('/students','aaa',"height=500,width=500") >aa</a>
 <%= link_to 'New Student', new_student_path %>
