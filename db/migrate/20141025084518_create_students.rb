@@ -7,7 +7,8 @@
       t.string :address
       t.string :phone
       t.string :memo
-      
+      t.decimal :sum
+      t.string :grade
       t.timestamps
     end
   end

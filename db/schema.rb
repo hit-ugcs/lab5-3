@@ -101,6 +101,8 @@ ActiveRecord::Schema.define(:version => 20141106020435) do
     t.string   "address"
     t.string   "phone"
     t.string   "memo"
+    t.decimal "sum"
+    t.string "grade"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

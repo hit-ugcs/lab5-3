@@ -1,8 +1,32 @@
 class StudentsController < ApplicationController
   # GET /students
   # GET /students.json
+  after_filter :sumUpdate
+  def sumUpdate
+    students = Student.all
+    students.each do |student|
+    if student.project != nil && student.project.score != nil && student.final != nil && student.final.score != nil && student.lab != nil && student.lab.score != nil && student.disc != nil &&  student.disc.score != nil && student.atten != nil && student.atten.score != nil
+      student.update_attributes(sum: student.project.score*0.4+student.final.score*0.4+student.lab.score*0.1+student.disc.score*0.05+student.atten.score*0.05)
+      if student.sum >= 90
+        student.update_attributes(grade: "A")
+      end 
+      if student.sum <90 and student.sum >=75
+        student.update_attributes(grade: "B")
+      end
+      if student.sum <75 and student.sum >=60
+        student.update_attributes(grade: "C")
+      end
+      if student.sum <60 
+        student.update_attributes(grade: "D")
+      end 
+    end
+   end
+  end
   def index
     @students = Student.all
+    if @students.length > 1
+      @students.sort! {|a,b| b.sum <=> a.sum}
+    end
 
     respond_to do |format|
       format.html # index.html.erb

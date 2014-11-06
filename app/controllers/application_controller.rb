@@ -1,5 +1,9 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  before_filter :set_sign_out
+  def set_sign_out
+    session[:auto_sign_out] =true
+  end
   before_filter :authenticate_user!
   before_filter :checkUpdates
   def checkUpdates
