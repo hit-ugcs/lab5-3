@@ -10,10 +10,13 @@
 <p class="notice"><%= notice %></p>
        <p class="alert"><%= alert %></p>
        <% if user_signed_in?%>
+          <% if @scoreUpdate.length >0%>
               <p><%= link_to @notice,  :controller =>'application', :action =>'sending'%></p>
        	<% @scoreUpdate.each do |s|%>
+             <%= Student.find(s.studentid).name%>
        	<%= s.tablename %> <%= s.fieldname %><br />
        	<% end %>
+       <% end %>
        <% end %>
 <%= yield %>
 

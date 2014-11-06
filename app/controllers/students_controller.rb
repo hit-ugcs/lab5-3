@@ -80,6 +80,10 @@ class StudentsController < ApplicationController
   def destroy
     @student = Student.find(params[:id])
     @student.project.destroy
+    @updates = ScoreUpdates.where(:studentid => @student.id)
+    @updates.each do |u|
+      u.destroy
+    end
     @student.destroy
 
     respond_to do |format|

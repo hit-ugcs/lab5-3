@@ -7,7 +7,12 @@ class FinalsController < ApplicationController
   def updateRow
     finals = Final.all
     finals.each do |f|
-      f.update_attributes(params[f.id.to_s])
+      if f.score.to_s != params[f.id.to_s][:score]
+        f.update_attributes(params[f.id.to_s])
+        if !ScoreUpdates.find(:first, :conditions =>["studentid= ? and fieldname = ? and tablename = 'Final'",f.student_id,params[:id]])
+         ScoreUpdates.create(studentid:f.student_id, fieldname:params[:id],tablename:"Final")
+        end
+      end
     end
     redirect_to finals_path
   end
@@ -54,6 +59,7 @@ class FinalsController < ApplicationController
 
     respond_to do |format|
       if @final.save
+        @new = ScoreUpdates.create(studentid: @final.student_id,tablename: "Final" ,fieldname: "score")
         format.html { redirect_to @final, notice: 'Final was successfully created.' }
         format.json { render json: @final, status: :created, location: @final }
       else
@@ -70,6 +76,9 @@ class FinalsController < ApplicationController
 
     respond_to do |format|
       if @final.update_attributes(params[:final])
+        if !ScoreUpdates.find(:first,:conditions =>["studentid = ? ",@final.student_id.to_s])
+          @new = ScoreUpdates.create(studentid: @final.student_id,tablename: "Final",fieldname: "score")
+        end
         format.html { redirect_to finals_path, notice: 'Final was successfully updated.' }
         format.json { head :no_content }
       else

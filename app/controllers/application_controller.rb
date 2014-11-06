@@ -9,7 +9,20 @@ class ApplicationController < ActionController::Base
 		end
   end
   def sending
-  	UpdateMailer.sendmail(1).deliver()
-  	redirect_to students_path
+      @students = Student.all
+      respond_to do |format|
+        @students.each do|s|
+          if s.email != nil && s.email !=""
+  	     UpdateMailer.sendmail(s.id).deliver()
+          else 
+            redirect_to students_path, notice: "#{s.name} has no email address" and return
+          end
+        end 
+       updates = ScoreUpdates.all
+       updates.each do |u|
+        u.destroy
+       end
+  	redirect_to students_path, notice: "email send succeeded" and return 
+    end
   end
 end

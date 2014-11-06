@@ -25,10 +25,12 @@ class AttensController < ApplicationController
   def updateRow
     attens = Atten.all
     attens.each do |a|
+      if a.send(params[:id]).to_s != params[a.id.to_s][params[:id]]
       a.update_attributes(params[a.id.to_s])
       if !ScoreUpdates.find(:first, :conditions =>["studentid= ? and fieldname = ? and tablename = 'Atten'",a.student_id,params[:id]])
         ScoreUpdates.create(studentid:a.student_id, fieldname:params[:id],tablename:"Atten")
       end
+    end
     end
     redirect_to attens_path
   end
@@ -94,7 +96,7 @@ class AttensController < ApplicationController
   def update
     @atten = Atten.find(params[:id])
     for i in 1..11 do
-      if params[:atten]["week#{i}"] != Atten.find(params[:id]).send("week#{i}").to_s
+      if params[:atten]["week#{i}"] != Atten.find(params[:id]).send("week#{i}").to_s && !ScoreUpdates.find(:first,:conditions =>["studentid = ? and fieldname = ?",@atten.student_id,"week#{i}"])
       	  @new = ScoreUpdates.create(studentid: @atten.student_id,tablename: "Atten",fieldname: "week#{i}")
       	end
     end
