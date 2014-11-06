@@ -1,6 +1,5 @@
 # Load the rails application
 require File.expand_path('../application', __FILE__)
-require "smtp_tls"
 # Initialize the rails application
 Ttt::Application.initialize!
     ActionMailer::Base.delivery_method = :smtp
