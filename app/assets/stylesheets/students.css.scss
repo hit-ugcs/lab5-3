@@ -1,13 +1,16 @@
 // Place all the styles related to the students controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-html {background: image-url("bg.jpg") no-repeat;}
+html,body {
+width: 980px;
+background: image-url("bg.jpg") no-repeat;}
 .datalist{  
     border:1px solid #0058a3;   /* 表格边框 */  
     font-family:Arial;  
     border-collapse:collapse;   /* 边框重叠 */  
     background-color:#eaf5ff;   /* 表格背景色 */  
     font-size:14px;  
+    
 }  
 .datalist caption{  
     padding-bottom:15px;  
@@ -33,4 +36,13 @@ html {background: image-url("bg.jpg") no-repeat;}
 }  
 .datalist tr.altrow{  
     background-color:#c7e5ff;   /* 隔行变色 */  
+}  
+
+h1 {color:orange;}
+.field{ 
+    width:330px;
+    border: 1px dotted #AAAAAA;  
+    padding: 3px 6px 3px 6px;  
+    margin:0px;  
+    font:14px Arial;  
 }  
