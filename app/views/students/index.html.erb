@@ -1,10 +1,12 @@
-<head>
+<html><head>
 <% if notice == 'close'%>
 	<script type="text/javascript">window.close()</script>
 <% end %>
-</head>
-<h1>Listing students</h1>
-<table>
+</head><body>
+<img src="assets/bg.jpg" no-repeat width="100%" />
+
+<table class="datalist">
+  <caption>Student Grade Sheet</caption>
   <tr>
     <th>Studentid</th>
     <th>Name</th>
@@ -47,4 +49,5 @@
 </table>
 
 <br />
-<%= link_to 'New Student', new_student_path %>
+<%= link_to 'New Student', new_student_path %></body>
+</html>
