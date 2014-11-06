@@ -59,14 +59,14 @@ class StudentsController < ApplicationController
     end
   end
 
-  # PUT /students/1
+  # PUT /students/10
   # PUT /students/1.json
   def update
     @student = Student.find(params[:id])
 
     respond_to do |format|
       if @student.update_attributes(params[:student])
-        format.html { redirect_to students_path, notice: 'Student was successfully updated.' }
+        format.html { redirect_to students_path, notice: 'close' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

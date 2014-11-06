@@ -9,7 +9,12 @@
 <body>
 <p class="notice"><%= notice %></p>
        <p class="alert"><%= alert %></p>
-
+       <% if user_signed_in?%>
+              <p><%= link_to @notice,  :controller =>'application', :action =>'sending'%></p>
+       	<% @scoreUpdate.each do |s|%>
+       	<%= s.tablename %> <%= s.fieldname %><br />
+       	<% end %>
+       <% end %>
 <%= yield %>
 
 </body>

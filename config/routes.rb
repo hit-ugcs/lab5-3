@@ -2,6 +2,8 @@ Ttt::Application.routes.draw do
   root :to => "students#index"
   devise_for :users
 
+  match "/sending" =>"application#sending"
+
   resources :students
 
   match "/attens/updateRow/:id" => "attens#updateRow"

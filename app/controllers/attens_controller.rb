@@ -26,7 +26,10 @@ class AttensController < ApplicationController
     attens = Atten.all
     attens.each do |a|
       a.update_attributes(params[a.id.to_s])
-    end 
+      if !ScoreUpdates.find(:first, :conditions =>["studentid= ? and fieldname = ? and tablename = 'Atten'",a.student_id,params[:id]])
+        ScoreUpdates.create(studentid:a.student_id, fieldname:params[:id],tablename:"Atten")
+      end
+    end
     redirect_to attens_path
   end
   def index
@@ -72,6 +75,11 @@ class AttensController < ApplicationController
 
     respond_to do |format|
       if @atten.save
+      	   for i in 1..11 do 
+      	    if @atten.send("week#{i}") != ""
+      	  	@new = ScoreUpdates.create(studentid: @atten.student_id,tablename: "Atten" ,fieldname: "week#{i}")
+      	    end
+      	  end 
         format.html { redirect_to @atten, notice: 'Atten was successfully created.' }
         format.json { render json: @atten, status: :created, location: @atten }
       else
@@ -85,9 +93,14 @@ class AttensController < ApplicationController
   # PUT /attens/1.json
   def update
     @atten = Atten.find(params[:id])
-
+    for i in 1..11 do
+      if params[:atten]["week#{i}"] != Atten.find(params[:id]).send("week#{i}").to_s
+      	  @new = ScoreUpdates.create(studentid: @atten.student_id,tablename: "Atten",fieldname: "week#{i}")
+      	end
+    end
     respond_to do |format|
       if @atten.update_attributes(params[:atten])
+
         format.html { redirect_to attens_path, notice: 'Atten was successfully updated.' }
         format.json { head :no_content }
       else
